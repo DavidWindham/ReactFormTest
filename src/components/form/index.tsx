@@ -3,16 +3,20 @@ import InputComponent from "./input"
 
 
 const Form = () => {
-    const resetRef = useRef(null)
+    const resetRefOne = useRef<any>("")
+    const resetRefTwo = useRef<any>("")
+    const resetRefThree = useRef<any>("")
 
     const handleSubmit = (event: any) => {
         event.preventDefault()
-        event.target.reset()
+        resetRefOne.current.value = "TEST";
+        resetRefTwo.current.value = "SECOND";
+        resetRefThree.current.value = "THIRD";
     }
     return <form onSubmit={handleSubmit}>
-        <InputComponent label="first" ref={resetRef}/>
-        <InputComponent label="second" ref={resetRef}/>
-        <InputComponent label="third" ref={resetRef}/>
+        <InputComponent label="first" passedRef={resetRefOne}/>
+        <InputComponent label="second" passedRef={resetRefTwo}/>
+        <InputComponent label="third" passedRef={resetRefThree}/>
         <button type="submit"></button>
     </form>
 }
